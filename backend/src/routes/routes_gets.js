@@ -2,7 +2,7 @@
 
 /*------------------------------------------------------------------------------------ */
 
-const {Router} = require ('express');
+const {Router} = require ('express'); // Averiguar porque {Router} esta definido así, testear la app. 
 const router = Router();
 
 const {getDatos, getCuit} = require('../controllers/Gets');

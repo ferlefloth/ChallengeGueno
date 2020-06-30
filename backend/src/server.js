@@ -12,9 +12,6 @@ app.use(cors({credentials: true,
   allawedHeaders: ['Content-Type']
 }))
 
-
-
-
 app.use(require('./routes/routes_gets'));
 
 app.listen(3000, ()=>{console.log('Mona Loading...')} );
