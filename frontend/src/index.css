@@ -1,12 +1,20 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  
+body{
+  background-color: rgb(77, 253, 109) !important;
+  font-family: 'Roboto', 'Raleway' !important;
 }
 
+.name-tamaño{
+  font-size: 5rem;
+}
+
+.form-position{
+  align-content: center;
+}
+#myBtn{
+  text-align: center;
+  font-size: 5rem;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

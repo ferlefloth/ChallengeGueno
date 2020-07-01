@@ -36,3 +36,9 @@ const GetInfo = (req,res)=>{
 }
 
 module.exports={GetCuit, GetInfo}
+
+
+
+///SE ME ROMPIO EL NODEMON////
+
+//GUARDO LA INSTRUCCión PRIMERA PARA QUE NO SE ROMPA "nodemon --watch src src/server.js"//
