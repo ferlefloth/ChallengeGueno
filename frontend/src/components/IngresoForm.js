@@ -1,23 +1,53 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 function IngresoForm (){
 
     return(
 
-      
-        <Form>
-            <label className="name-tamaño">
-                Name: 
-                <input type="text" /*value={this.state.value} onChange={this.handleChange}*/ />
-            </label>
-            &nbsp;
-            <input type="submit" value="Submit" id="myBtn" placeholder="What's ya name?"/>
-        </Form>
+    <>  
+    <Container>
        
+    <Row >
+        <Col>
+            
+            <Form className="name-tamaño">
 
+                <Form.Group >
+                    <Form.Label >ID del Usuario:</Form.Label>
+
+                    <Form.Control type="text"
+                                
+                            //         value={}
+                            //       onChange={}
+                    />
+
+                </Form.Group>
+
+                <Form.Group>
+                    
+                    <Form.Label>Se mostrarán los datos</Form.Label>
+
+                    <Form.Control  type="submit"
+                                    size= 'lg'
+                                    id='style-fomrcontrol'
+                                    className="mx-sm-3"
+                                    //    value={}
+                                //  onChange={}
+                    />
+                
+                </Form.Group>
+            </Form>
+        
+        </Col>
+    </Row>
+    
+    </Container>
+    </>
     )
 }
 

@@ -6,15 +6,24 @@ body{
 
 .name-tamaño{
   font-size: 5rem;
+  text-align: center;
+  align-content: center,
 }
 
 .form-position{
   align-content: center;
 }
+
 #myBtn{
   text-align: center;
   font-size: 5rem;
 }
+#style-fomrcontrol{
+  font-size: 3rem;
+  block-size: 5rem;
+  ;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
