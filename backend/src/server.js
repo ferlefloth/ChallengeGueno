@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json())
 
 app.use(cors({credentials: true, 
-  origin: 'http://localhost:3001', //se pone el origen de DONDE VIENE LA SOLICITUD (osea del front)
+  origin: 'http://localhost:3001', //se pone el origen de DONDE VIENE LA SOLTUD (osea del front)
   allawedHeaders: ['Content-Type']
 }))
 

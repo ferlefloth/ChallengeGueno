@@ -10,7 +10,9 @@ import Col from 'react-bootstrap/Col'
 function IngresoForm ({setDatos, setCuit}){
 
     let url = 'http://localhost:3000/'    
+    
     const [id, SetId] = useState('')
+  
     function handleId(e){
         SetId(e.target.value)
     }
@@ -26,21 +28,21 @@ function IngresoForm ({setDatos, setCuit}){
                     setCuit(cuit)
                     //PREGUNTA POR LOS DATOS
                     
-                    try{
-                        fetch(url + "getinformacion/" + id )
-                        .then(response=>response.json())
-                        .then(data =>{
+                    // try{
+                    //     fetch(url + "getinformacion/" + cuit )
+                    //     .then(response=>response.json())
+                    //     .then(data =>{
 
-                        setDatos(data.data)
-                        });
-                    }
-                    catch(e){
-                        alert ('Error al realizar petición')
-                    }
-             }else if(!data.success){
+                    //     setDatos(data.data)
+                    //     });
+                    // }
+                    // catch(e){
+                    //     alert ('Error al realizar petición')
+                    // }
+             }else if(data.success = false){
                  setDatos(data.message)
              }
-         }
+         },[]
     )
 } catch (e) {
     alert('Error al realizar la petición');
@@ -61,8 +63,8 @@ function IngresoForm ({setDatos, setCuit}){
                     <Form.Label >ID del Usuario:</Form.Label>
 
                     <Form.Control type="text"
-                                    value={id}
-                                    onChange={handleId}
+                                  value={id}
+                                  onChange={handleId}
                     />
 
                 </Form.Group>
@@ -71,7 +73,8 @@ function IngresoForm ({setDatos, setCuit}){
                     
                     <Form.Label>Se mostrarán los datos</Form.Label>
 
-                    <Form.Control  //onSubmit={handleMandarPeticion} 
+                    <Form.Control  //onSubmit={handleId} 
+                                    
                                     type="submit"
                                     size= 'lg'
                     />

@@ -13,6 +13,8 @@ function App() {
     <NavigationBar />
 
     <IngresoForm setDatos={setDatos} setCuit={setCuit}/>
+
+    
     </>
   );
 }
