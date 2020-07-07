@@ -62,23 +62,14 @@ function IngresoForm ({setDatos, setCuit}){
                 <Form.Group >
                     <Form.Label >ID del Usuario:</Form.Label>
 
-                    <Form.Control type="text"
-                                  value={id}
-                                  onChange={handleId}
-                    />
-
-                </Form.Group>
-
-                <Form.Group>
-                    
-                    <Form.Label>Se mostrarán los datos</Form.Label>
-
-                    <Form.Control  //onSubmit={handleId} 
-                                    
-                                    type="submit"
-                                    size= 'lg'
-                    />
-                
+                    <Form.Control
+                        type="number"
+                        placeholder="Ingrese un ID"
+                        value={id}
+                        onChange={handleId}
+                    >         
+                    </Form.Control>
+                <input type="submit" value="Buscar" className="btn btn-dark" />
                 </Form.Group>
             </Form>
         
