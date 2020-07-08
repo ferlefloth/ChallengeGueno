@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import Form from 'react-bootstrap/Form'
 //import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
@@ -18,35 +18,43 @@ function IngresoForm ({setDatos, setCuit}){
     }
     ////////////////////////////////////////////////////////////////    
     //REALIZAR LA PETICION PARA VER SI EXISTE ESE ID O NO
+    
+    
+    useEffect( ()=>{
+
+        
     try{
         fetch(url + "getcuit/" + id)
         .then(response => response.json())
         .then((data)=>{
             
             if(data.success){
-                    let cuit = data.data.cuit
-                    setCuit(cuit)
-                    //PREGUNTA POR LOS DATOS
-                    
-                    // try{
-                    //     fetch(url + "getinformacion/" + cuit )
-                    //     .then(response=>response.json())
-                    //     .then(data =>{
+                let cuit = data.data.cuit
+                setCuit(cuit)
+                //PREGUNTA POR LOS DATOS
+                
+                // try{
+                //     fetch(url + "getinformacion/" + cuit )
+                //     .then(response=>response.json())
+                //     .then(data =>{
 
-                    //     setDatos(data.data)
-                    //     });
-                    // }
-                    // catch(e){
-                    //     alert ('Error al realizar petición')
-                    // }
+                //     setDatos(data.data)
+                //     });
+                // }
+                // catch(e){
+                //     alert ('Error al realizar petición')
+                // }
              }else if(data.success = false){
                  setDatos(data.message)
              }
-         },[]
-    )
-} catch (e) {
-    alert('Error al realizar la petición');
-  }
+         },[])
+            } 
+            catch (e) {
+                alert('Error al realizar la petición');
+             }
+            }
+    );
+    
     
 
     return(

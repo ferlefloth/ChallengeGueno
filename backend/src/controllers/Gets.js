@@ -10,7 +10,7 @@ const getCuit = (req, res) =>{
     .then(response =>response.json())
     .then(data=>{
       res.send(data);
-      //console.log(data)
+      console.log(data)
     })
   }catch (e){
     res.json({
