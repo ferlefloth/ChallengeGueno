@@ -1,130 +1,111 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState} from 'react'
 import Form from 'react-bootstrap/Form'
-//import Button from 'react-bootstrap/Button'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
 
+function IngresoForm({setDatos, setCuit}){
 
-
-function IngresoForm ({setDatos, setCuit}){
-
-    let url = 'http://localhost:3000/'    
     
-    const [id, SetId] = useState('')
-  
-    function handleId(e){
-        SetId(e.target.value)
+////////////////////  < ABRIR Y CERRAR EL MODAL  >///////////////////////
+    const  [mostrarModal, setMostrarModal] = useState(false)
+
+    function handleShow(){
+
+        setMostrarModal(true)
     }
-    ////////////////////////////////////////////////////////////////    
-    //REALIZAR LA PETICION PARA VER SI EXISTE ESE ID O NO
+  
+    function handleHide(){
+
+        setMostrarModal(false)
+    }
+
+///////////////////   </ ABRIR Y CERRAR EL MODAL >/////////////////////
+    
+    let url = 'http://localhost:3000/'    
+    const [id, setId] = useState('')
+
+    
+    function handleUserId(e){
+        setId(e.target.value)
+    }
     
     
-    useEffect( ()=>{
+    function handleEnviarDatos(){
+
+
+        try{
+            fetch(url + "getcuit/" + id)
+            .then(response => response.json())
+            .then((data)=>{
+                
+                if(data.success){
+                    let cuit = data.data.cuit
+                    setCuit(cuit)
+                    //PREGUNTA POR LOS DATOS
+                    
+                    // try{
+                    //     fetch(url + "getinformacion/" + cuit )
+                    //     .then(response=>response.json())
+                    //     .then(data =>{
+    
+                    //     setDatos(data.data)
+                    //     });
+                    // }
+                    // catch(e){
+                    //     alert ('Error al realizar petición')
+                    // }
+                 }else if(data.success = false){
+                     setDatos(data.message)
+                 }
+             },[])
+                } 
+                catch (e) {
+                    alert('Error al realizar la petición');
+                 }
+    }
 
         
-    try{
-        fetch(url + "getcuit/" + id)
-        .then(response => response.json())
-        .then((data)=>{
-            
-            if(data.success){
-                let cuit = data.data.cuit
-                setCuit(cuit)
-                //PREGUNTA POR LOS DATOS
-                
-                // try{
-                //     fetch(url + "getinformacion/" + cuit )
-                //     .then(response=>response.json())
-                //     .then(data =>{
-
-                //     setDatos(data.data)
-                //     });
-                // }
-                // catch(e){
-                //     alert ('Error al realizar petición')
-                // }
-             }else if(data.success = false){
-                 setDatos(data.message)
-             }
-         },[])
-            } 
-            catch (e) {
-                alert('Error al realizar la petición');
-             }
-            }
-    );
-    
-    
-
     return(
 
-    <>  
-    <Container>
-       
-    <Row >
-        <Col>
-            
-            <Form className="name-tamaño" >
+        <>
+        <div className="modal-form" >
+            <Button variant="danger" size="lg" onClick={handleShow}>
+                Ingreso ID
+            </Button>
+        </div>
 
-                <Form.Group >
-                    <Form.Label >ID del Usuario:</Form.Label>
+        <Modal show={mostrarModal} onHide ={handleHide}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Inisiar Sesión</Modal.Title>
+                    </Modal.Header>
 
-                    <Form.Control
-                        type="number"
-                        placeholder="Ingrese un ID"
-                        value={id}
-                        onChange={handleId}
-                    >         
-                    </Form.Control>
-                <input type="submit" value="Buscar" className="btn btn-dark" />
-                </Form.Group>
-            </Form>
-        
-        </Col>
-    </Row>
-    
-    </Container>
-    </>
+                    <Modal.Body>
+
+                    <Form.Group>
+                            <Form.Label>ID del usuario</Form.Label>
+                            <Form.Control type="text"
+                                            value={id}
+                                            onChange={handleUserId}
+                                />
+
+                    </Form.Group>
+                        
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button variant= "secondary"
+                                onClick={ handleHide}>
+                            Cancelar
+                        </Button>
+
+                        <Button variant="primary"
+                                onClick={handleEnviarDatos}>
+                            Aceptar
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+
+        </>
     )
 }
-
 export default IngresoForm;
-
-// class MyForm extends React.Component {
-//     //for state you MUST have a constructor
-//     //as well as super()
-//     //remember to pass in props
-//     constructor(props) {
-//       super(props);
-//       this.state = {value: ''};
-      
-//       this.handleChange = this.handleChange.bind(this);
-//       this.handleSubmit = this.handleSubmit.bind(this);
-//     }
-    
-//     handleChange(event) {
-//       //handles change in the input's value
-//       this.setState({value: event.target.value});
-//     }
-    
-//     handleSubmit(event) {
-//       //display message and name to user
-//       ReactDOM.render(<h1>Hello, {this.state.value}</h1>, document.getElementById('userInfo'));
-//       event.preventDefault(); 
-//     }
-//     render() {
-//       return (
-//         <form onSubmit={this.handleSubmit}>
-//             <label>
-//                 Name: 
-//                 <input type="text" value={this.state.value} onChange={this.handleChange} />
-//             </label>
-//             &nbsp;
-//             <input type="submit" value="Submit" id="myBtn" placeholder="What's ya name?"/>
-//           </form>
-//       );
-//     }
-//   }
-//   //now render your form
-//   ReactDOM.render(<MyForm />, document.getElementById('myApp'));

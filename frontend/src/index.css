@@ -4,15 +4,12 @@ body{
   font-family: 'Roboto', 'Raleway' !important;
 }
 
-.name-tamaño{
-  font-size: 5rem;
+.modal-form{
+  font-size: 3rem;
   text-align: center;
   align-content: center,
 }
 
-.form-position{
-  align-content: center;
-}
 
 #myBtn{
   text-align: center;
